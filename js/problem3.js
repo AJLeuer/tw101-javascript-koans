@@ -39,12 +39,21 @@ function changeElementText(element, answer) {
 }
 
 function fareForRide(distanceTraveled, timeWaiting, isNight) {
-    changeElementText("#distanceTraveled", "some");
-    changeElementText("#timeWaiting", "some");
-    changeElementText("#nightOrDay", "night or day");
-    var fare = "some amount";
+
+    var fare = 0;
 
     // write some code here!
+    changeElementText("#distanceTraveled", distanceTraveled.toString());
+    changeElementText("#timeWaiting", timeWaiting.toString());
+    changeElementText("#nightOrDay", (isNight ? "night" : "day"));
+
+    //auto fare formula is: 20 + 8 * (d-1) + 4 * w, where w = waiting time and d = distance traveled
+    fare = (20 + 8) * (distanceTraveled - 1) * timeWaiting ;
+
+    if (isNight) {
+        fare += (fare * 0.5) ;
+    }
+
 
     changeElementText("#fare", fare);
 }
