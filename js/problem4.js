@@ -26,4 +26,44 @@
 
 */
 
+function changeElementText(element, answer) {
+    $(element).text(answer);
+}
+
 // Write your JavaScript here
+function countMoney() {
+
+    var notesList = "" ;
+    var sum = 0 ;
+    
+    var keepCounting = true ;
+    for (var i = 0; i < arguments.length; i++) {
+
+        var n = arguments[i] ;
+
+        notesList += n.toString() + ", " ;
+
+        if (keepCounting && isValidDenomination(n)) {
+            sum += n ;
+        }
+        else {
+            keepCounting = false ;
+        }
+    }
+
+    if (notesList.length > 0) {
+        notesList = notesList.substring(0, notesList.length - 2); //cut off the trailing comma
+    }
+
+    changeElementText("#listOfNotes", notesList) ;
+    changeElementText("#total", sum) ;
+}
+
+function isValidDenomination(n) {
+    if ((n == 5) || (n == 10) || (n == 20) || (n == 50) || (n == 100) || (n == 500) || (n == 1000)) {
+        return true ;
+    }
+    else {
+        return false ;
+    }
+}
