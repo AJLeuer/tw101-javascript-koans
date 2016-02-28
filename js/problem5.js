@@ -34,3 +34,73 @@
  */
 
 // Write your JavaScript here
+
+function fixAdText(strArray) {
+    changeElementText("#advertisingText", convertToMultilineStr(strArray)) ;
+
+    reverseElements(strArray[1], 0, (strArray[1].length - 1)) ;
+
+    changeElementText("#correctedAdvertising", convertToSingleLineStr(strArray)) ;
+
+    var count = "count: " ;
+    count += countElements(strArray) ;
+
+    changeElementText("#wordCount", count) ;
+}
+
+function convertToMultilineStr(str2DArray) {
+    var str = "" ;
+
+    for (var i = 0 ; i < str2DArray.length ; i++) {
+        str += convertToString(str2DArray[i]) + '\n'; //can't get newlines to display on safari or chrome...
+    }
+
+    return str ;
+}
+
+function convertToSingleLineStr(str2DArray) {
+    var str = "" ;
+
+    for (var i = 0 ; i < str2DArray.length ; i++) {
+        str += convertToString(str2DArray[i]) ;
+    }
+    return str ;
+}
+
+function convertToString(strArray) {
+    var str = "" ;
+
+    for (var i = 0 ; i < strArray.length ; i++) {
+        str += strArray[i] + ' ' ;
+    }
+
+    return str ;
+}
+
+function reverseElements(array, beginIndex, endIndex) {
+    if (beginIndex >= endIndex) {
+        return ;
+    }
+    else {
+        swapElements(array, beginIndex, endIndex) ;
+        reverseElements(array, beginIndex + 1, endIndex -1) ;
+    }
+}
+
+function swapElements(array, firstElementIndex, secondElementIndex) {
+    var temp = array[firstElementIndex] ;
+    array[firstElementIndex] = array[secondElementIndex] ;
+    array[secondElementIndex] = temp ;
+}
+
+function countElements(array2D) {
+    var count = 0 ;
+    for (var i = 0 ; i < array2D.length ; i++) {
+        count += array2D[i].length ;
+    }
+    return count ;
+}
+
+function changeElementText(element, answer) {
+    $(element).text(answer);
+}

@@ -14,5 +14,12 @@ $(document).ready(function() {
 
     // Problem 5
     // call your problem 5 code here
+    var adText = [
+                    ["zara", "dhyaan", "dein"],
+                    ["mazarat", "chahenge"],
+                    ["attention", "please"]
+                 ] ;
+
+    fixAdText(adText) ;
 
 });

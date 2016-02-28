@@ -35,7 +35,7 @@ function countMoney() {
 
     var notesList = "" ;
     var sum = 0 ;
-    
+
     var keepCounting = true ;
     for (var i = 0; i < arguments.length; i++) {
 
